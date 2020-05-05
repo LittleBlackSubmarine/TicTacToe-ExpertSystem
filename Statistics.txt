@@ -1,0 +1,4 @@
+Computer first 10 times, player first 10 times:
+
+Computer: 3 wins, 17 draws, 0 lost
+Player(me): 0 wins, 17 draws, 3 lost 
