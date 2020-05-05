@@ -111,12 +111,7 @@ stopFork(Moves,PlayerMoves,CompMoves,Move):-
     containElements_2(PlayerMoves,4,9), containElements_1(Moves,1),containElements_1(Moves,7),containElements_1(Moves,8),Move=7;
     containElements_2(PlayerMoves,3,7), not(containsElements_4(CompMoves,2,4,6,8)),random_member(Move,[2,4,6,8]);
     containElements_2(PlayerMoves,1,9), not(containsElements_4(CompMoves,2,4,6,8)),random_member(Move,[2,4,6,8]).
-
-%!  !!!!!!!!
-%!  !!!!
-%Error exiting prolog. fix!!!!!!!!!!!!!!!!!!%
-%!  !!!!
-%!  !!!!!!!!
+    
 
 % Playing mid if possible
 playingMid(Moves,Move):-memberchk(5,Moves),Move=5.
@@ -183,7 +178,7 @@ chooseFirst():-nl,write("\nFirst player?['p.'-player|'c.'-comp]: "),read(First),
 makeFirst(First):-
     First==p,turn(o),assertz(turn(x)),retract(turn(o)),write("\nEnter desired position followed by dot: ");  %If 'p' first but turn(o) reamined in facts
     First==p,turn(x),write("\nEnter desired position followed by dot: ");                                    %If 'p' and turn(x) already asserted
-    First==p,assertz(turn(x)),write("\nEnter desired position followed by dot: ");                           %If 'p' but no asserted 'turn' facts //Maybe redudant
+    First==p,assertz(turn(x)),write("\nEnter desired position followed by dot: ");                           %If 'p' but no asserted 'turn' facts //Maybe redundant
     First==c,turn(x),assertz(turn(o)),retract(turn(x));                                                      %...
     First==c,turn(o);                                                                                        %...
     First==c,assertz(turn(o)).                                                                               %...
@@ -290,6 +285,4 @@ playAgain(Answer):-
 % Start the game by typing "start." without qoutes.
 start :- message,chooseFirst().
 
-% Trying to fix infinite loop afte pressing x on SWI-Prolog windows
-exit:-halt.
-exit.
+
